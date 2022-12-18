@@ -1,8 +1,9 @@
 class Solution {
+     int pos[]=new int[100000];
+        int neg[]=new int[100000];
     public int[] rearrangeArray(int[] nums) {
         int n=nums.length;
-        int pos[]=new int[n/2];
-        int neg[]=new int[n/2];
+       
         int i=0,j=0;
        for(int a:nums)
        {
