@@ -1,27 +1,23 @@
 class Solution {
+    
     public List<String> generateParenthesis(int n) {
-        List<String>ans=new ArrayList<>();
-        helper("",0,0,ans,n);
-        return ans;
+        char  arr[]=new char [n*2];
+        List<String>list=new ArrayList<>();
+        helper(arr,0,n,0,0,list);
+            return  list;
     }
-    public void helper(String str,int open,int close,List<String>list,int n)
+    void helper(char arr[],int index,int n,int open,int close,List<String>list)
     {
-       // System.out.println(str);
-        if(str.length()==n*2)
+        if(open>n || close > n || open<close )
+            return ;
+        if(index==n*2)
         {
-          list.add(str);
+            list.add(String.valueOf(arr));
             return;
         }
-        if(open<n)
-        {
-            
-            helper(str+'(',open+1,close,list,n);
-        }
-        if(close<open)
-        {
-           
-            helper(str+')',open,close+1,list,n);
-        }
-       
+        arr[index]='(';
+        helper(arr,index+1,n,open+1,close,list);
+        arr[index]=')';
+        helper(arr,index+1,n,open,close+1,list);     
     }
 }
