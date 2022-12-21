@@ -3,7 +3,8 @@ class Solution {
         int min=nums[0];
         for(int a:nums)
         {
-            min=Math.min(a,min);
+          if(min>a)
+              min=a;
         }
         return min;
     }
