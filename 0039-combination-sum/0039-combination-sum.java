@@ -5,7 +5,7 @@ class Solution {
         return list;
     }
     public void helper(List<List<Integer>>ans,List<Integer>list,int target,int index,int arr[]){
-        System.out.println(list);
+       
         if(index==arr.length || target<0)
             return ;
         if(target==0)
