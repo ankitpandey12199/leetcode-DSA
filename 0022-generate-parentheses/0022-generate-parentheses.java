@@ -7,6 +7,7 @@ class Solution {
     public void helper(String str,int open,int close,List<String>list,int n)
     {
        // System.out.println(str);
+        if(close>open )return ;
         if(str.length()==n*2)
         {
           list.add(str);
