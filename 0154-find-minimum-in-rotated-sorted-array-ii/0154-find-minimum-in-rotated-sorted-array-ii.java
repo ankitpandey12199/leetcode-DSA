@@ -1,11 +1,21 @@
 class Solution {
-    public int findMin(int[] nums) {
-        int min=nums[0];
-        for(int a:nums)
+    public int findMin(int[] arr) {
+          int beg=0,end=arr.length-1,mid;
+        if(arr[beg]<arr[end])return arr[beg];
+        while(beg<end)
         {
-          if(min>a)
-              min=a;
+            mid=beg+(end-beg)/2;
+            if(arr[end]<arr[mid])
+            {
+                beg=mid+1;
+            }
+            else if(arr[end]>arr[mid])
+            {
+                end=mid;
+            }
+            else 
+                end--;
         }
-        return min;
+     return arr[end];
     }
 }
