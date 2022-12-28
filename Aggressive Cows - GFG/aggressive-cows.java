@@ -60,6 +60,7 @@ class Solution {
             int mid=(beg+end)>>1;
             if(isPossible(stalls,mid,k))
             {
+                ans=mid;
                 beg=mid+1;
             }
             else
@@ -67,6 +68,6 @@ class Solution {
                 end=mid-1;
             }
         }
-        return end;
+        return ans;
     }
 }
