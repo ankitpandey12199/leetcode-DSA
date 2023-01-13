@@ -34,19 +34,19 @@ public class Main {
 
 class Solution {
     int print2largest(int arr[], int n) {
-        int max=arr[0],secondMax=-1;
-        for(int i=0;i<n;i++)
-        {
-            if(arr[i]>max)
-            {
-                secondMax=max;
-                max=arr[i];
-            }
-            else if(arr[i]>secondMax && arr[i]<max)
-            {
-                secondMax=arr[i];
-            }
-        }
-        return secondMax;
+      int max=Integer.MIN_VALUE,secondMax=Integer.MIN_VALUE;
+      for(int a:arr)//loop to iterate
+      {
+          if(a>max)//if curr element is greater than max
+          {
+              secondMax=max;//update secondmax as current max
+              max=a;//update max as curr element
+          }
+          else if(a>secondMax && a<max)//if curr number  is greater than second max and less than
+          {
+             secondMax=a;//update second max as curr element
+          }
+      }
+      return secondMax==Integer.MIN_VALUE?-1:secondMax;//return secondMax
     }
 }
