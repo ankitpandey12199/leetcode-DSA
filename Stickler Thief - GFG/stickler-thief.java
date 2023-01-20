@@ -36,7 +36,7 @@ class Solution
     //Function to find the maximum money the thief can get.
     public int FindMaxSum(int arr[], int n)
     {
-        return recur(arr,0,new int [n+1]);
+     return tablulation(arr);
     }
     public int recur(int arr[],int index)
     {
@@ -59,5 +59,18 @@ class Solution
         int excNext=arr[index]+recur(arr,index+2,dp);
         dp[index]=Math.max(incNext,excNext);
         return dp[index];
+    }
+    public int tablulation(int arr[])
+    {
+        int prevInc=arr[0];
+        int prevExc=0;
+        for(int i=1;i<arr.length;i++)
+        {
+            int incMe=prevExc+arr[i];
+            int excMe=Math.max(prevExc,prevInc);
+            prevExc=excMe;
+            prevInc=incMe;
+        }
+        return Math.max(prevInc,prevExc);
     }
 }
