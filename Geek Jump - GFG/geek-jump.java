@@ -32,7 +32,7 @@ class GFG{
 
 class Solution{
     public int minimumEnergy(int arr[],int N){
-        return tabulation(arr,new int [N]);
+        return mostOptimised(arr);
     }
     public int recur(int arr[],int index)
     {
@@ -70,5 +70,22 @@ class Solution{
          dp[index]=Math.min(pick,pickNext);
        }
        return dp[0];
+    }
+    public int mostOptimised(int arr[])
+    {
+        int last=0,lastSecond=0;
+        for(int i=1;i<arr.length;i++)
+        {
+            int ps=Math.abs(arr[i]-arr[i-1])+last;
+            int fs=Integer.MAX_VALUE;
+            if(i>1)
+            {
+                fs=lastSecond+Math.abs(arr[i]-arr[i-2]);
+            }
+            int curr=Math.min(ps,fs);
+            lastSecond=last;
+            last=curr;
+        }
+        return last;
     }
 }
