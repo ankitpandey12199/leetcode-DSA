@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out=new PrintWriter(System.out);
         int tc = Integer.parseInt(br.readLine().trim());
         while (tc-- > 0) {
             String[] inputLine;
@@ -21,8 +22,9 @@ public class Main {
             }
 
             int ans = new Solution().findMaxSum(arr, n);
-            System.out.println(ans);
+            out.println(ans);
         }
+        out.close();
     }
 }
 // } Driver Code Ends
@@ -32,14 +34,14 @@ public class Main {
 
 class Solution {
     int findMaxSum(int arr[], int n) {
-      int incPrev=arr[0];
-      int excPrev=0;
-      for(int i=1;i<n;i++)
-      {
-          int incMe=excPrev+arr[i];
-          excPrev=Math.max(incPrev,excPrev); 
-          incPrev=incMe;
-      }
-      return Math.max(incPrev,excPrev);
+        int incPrev=arr[0];
+        int excPrev=0;
+        for(int i=1;i<n;i++)
+        {
+            int incMe=excPrev+arr[i];
+            excPrev=Math.max(excPrev,incPrev);
+            incPrev=incMe;
+        }
+        return Math.max(excPrev,incPrev);
     }
 }
