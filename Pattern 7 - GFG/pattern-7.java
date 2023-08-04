@@ -21,19 +21,30 @@ class Main {
 class Solution {
 
     void printTriangle(int n) {
-      for(int i=1;i<=n;i++)
-      {
-          for(int j=i;j<n;j++)
-          {
-              System.out.print(" ");
-          }
-          for(int j=1;j<=i*2-1;j++)
-          {
-              System.out.print("*");
-          }
-          System.out.println();
-      }
-        
+         
+         print(1,1,1,n);   
+    }
+    public void print(int i,int j,int spc,int n)
+    {
+        if(i>n)return;
+        if(spc<n)
+        {
+            System.out.print(" ");
+            print(i,j,spc+1,n);
+        }
+        else
+        {
+            if(j<=i*2-1)
+            {
+                System.out.print("*");
+                print(i,j+1,spc,n);
+            }
+            else
+            {
+                System.out.println();
+                print(i+1,1,i+1,n);
+            }
+        }
     }
   
 }
